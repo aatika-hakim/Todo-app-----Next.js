@@ -1,6 +1,6 @@
 "use client";
 import { useState, ChangeEvent, KeyboardEvent } from "react";
-import { FaPlusCircle, FaTrash, FaEdit, FaSave } from "react-icons/fa";
+import { FaPlusCircle, FaTrash, FaEdit, FaSave, FaUndo } from "react-icons/fa";
 
 interface Todo {
     id: number;
@@ -71,11 +71,12 @@ export default function Home() {
     };
 
     return (
-        <div className="container pt-4 min-w-full min-h-screen">
+        <div className="container pt-4 min-w-full min-h-screen overflow-hidden">
             <h1 className="min-w-full text-4xl text-center font-semibold bg-gradient-to-br from-purple-800 to-blue-500 text-white px-4 py-3">
                 Todo App
             </h1>
-            <div className="flex justify-center space-x-2 mb-10 pt-40">
+            <div className="mx-10 border-2 border-gray-300">
+                <div className="flex justify-center space-x-2 mb-10 pt-40">
                 <input
                     type="text"
                     placeholder="Add a New Todo"
@@ -88,10 +89,10 @@ export default function Home() {
                     onClick={addTodo}
                     className="bg-gradient-to-r from-purple-800 to-blue-500 text-white px-4 py-3 hover:bg-gradient-to-bl"
                 >
-                    <FaPlusCircle className="w-12 h-8" />
+                    <FaPlusCircle className="w-12 h-8 p-1" />
                 </button>
             </div>
-            <ul className="mx-30">
+            <ul className="mx-auto">
                 {todos.map((todo) => (
                     <div
                         key={todo.id}
@@ -105,13 +106,13 @@ export default function Home() {
                                     onChange={(e) =>
                                         setEditingTodoText(e.target.value)
                                     }
-                                    className="border p-4 w-96 bg-white"
+                                    className="border p-4 w-96 bg-white overflow-hidden"
                                 />
                                 <button
                                     onClick={saveEditing}
-                                    className="bg-gradient-to-r from-green-800 to-green-500 text-white px-3 py-3 hover:bg-gradient-to-bl"
+                                    className="bg-gradient-to-r from-blue-800 to-cyan-500 text-white px-3 py-3 hover:bg-gradient-to-bl"
                                 >
-                                    <FaSave className="w-12 h-8 p-[1px]" />
+                                    <FaSave className="w-12 h-8 p-1" />
                                 </button>
                                 <button
                                     onClick={cancelEditing}
@@ -121,9 +122,9 @@ export default function Home() {
                                 </button>
                                 <button
                                     onClick={undoEditing}
-                                    className="bg-gray-800 text-white px-6 py-4 hover:bg-gradient-to-bl"
+                                    className="bg-gradient-to-r from-blue-800 to-cyan-500 text-white px-3 py-3 hover:bg-gradient-to-bl"
                                 >
-                                    Undo
+                                    <FaUndo className="w-12 h-8 p-1"/>
                                 </button>
                             </>
                         ) : (
@@ -135,13 +136,13 @@ export default function Home() {
                                     onClick={() => startEditing(todo.id, todo.text)}
                                     className="bg-gradient-to-r from-purple-800 to-blue-500 text-white px-4 py-3 hover:bg-gradient-to-bl"
                                 >
-                                    <FaEdit className="w-12 h-8 p-[1px]" />
+                                    <FaEdit className="w-12 h-8 p-1" />
                                 </button>
                                 <button
                                     onClick={() => deleteTodo(todo.id)}
                                     className="bg-gradient-to-r from-red-800 to-red-500 text-white px-4 py-3 hover:bg-gradient-to-bl"
                                 >
-                                    <FaTrash className="w-12 h-8 p-[1px]" />
+                                    <FaTrash className="w-12 h-8 p-1" />
                                 </button>
                                 {editingTodoId === todo.id && (
                                     <button
@@ -156,6 +157,7 @@ export default function Home() {
                     </div>
                 ))}
             </ul>
+            </div>
         </div>
     );
 }
