@@ -119,6 +119,12 @@ export default function Home() {
                                 >
                                     Cancel
                                 </button>
+                                <button
+                                    onClick={undoEditing}
+                                    className="bg-gray-800 text-white px-6 py-4 hover:bg-gradient-to-bl"
+                                >
+                                    Undo
+                                </button>
                             </>
                         ) : (
                             <>
@@ -137,6 +143,14 @@ export default function Home() {
                                 >
                                     <FaTrash className="w-12 h-8 p-[1px]" />
                                 </button>
+                                {editingTodoId === todo.id && (
+                                    <button
+                                        onClick={undoEditing}
+                                        className="bg-gray-800 text-white px-6 py-4 hover:bg-gradient-to-bl"
+                                    >
+                                        Undo
+                                    </button>
+                                )}
                             </>
                         )}
                     </div>
@@ -145,3 +159,4 @@ export default function Home() {
         </div>
     );
 }
+
