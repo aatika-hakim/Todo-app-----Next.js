@@ -33,14 +33,14 @@ export default function Home() {
     };
     return (
         <div className="container pt-4 min-w-full min-h-screen bg-black">
-            <h1 className="min-w-full text-4xl text-center font-semibold bg-gradient-to-r from-purple-800 to-blue-500 text-white px-4 py-3">
+            <h1 className="min-w-full text-4xl text-center font-semibold bg-gradient-to-br from-purple-800 to-blue-500 text-white px-4 py-3">
                 Todo App
             </h1>
             <div>
                 <div className="container mx-auto flex space-x-2 mb-10 pt-40">
                 <input
                     type="text"
-                    placeholder="Add a new todo"
+                    placeholder="Add a New Todo"
                     value={newTodo}
                     onChange={handleInputChange}
                     onKeyPress={handleKeyPress}
